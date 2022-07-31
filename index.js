@@ -9,6 +9,7 @@ const Intern = require('./lib/Intern');
 //node modules
 const fs =require('fs');
 const inquirer = require('inquirer');
+const Choices = require('inquirer/lib/objects/choices');
 
 //team array
 const teamArray = [];
@@ -79,11 +80,32 @@ const addManager = () => {
 };
 const addEmployee = () => {
     console.log(`
-    
+    ================
     Adding empolyees to the team
+    ================
     `);
 }
+return inquirer.prompt([{
+    type:'list',
+    name:'role',
+    message:"Please choose employee's role",
+    Choices:['Engineer', 'Intern']
+},
+{
+    type:'input',
+    name:'name',
+    message:"",
+    validate:nameInput=>{
+        if(nameInput){
+            
+        }
+    }
+}
 
+
+
+
+}])
 
 
 
