@@ -192,13 +192,13 @@ return inquirer.prompt([{
 
 //function to generate HTML page file using file system
 const writeFile = data => {
-    fs.writeFile('./dist/index.html', data, err =>{
+    fs.writeFile('./dist/index.html', data, err => {
         //if there's no error
-        if(err){
+        if(err) {
             console.log(err);
             return;
         //when profile has been created
-        }else {
+        } else {
             console.log("Your team profile has been successfully created! Please check out the index.html")
         }
     })
@@ -212,6 +212,6 @@ addManager()
     .then(pageHTML => {
         return writeFile(pageHTML);
     })
-    .catch(err=>{
+    .catch(err=> {
         console.log(err);
     });
