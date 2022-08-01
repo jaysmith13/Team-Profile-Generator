@@ -10,6 +10,7 @@ const Intern = require('./lib/Intern');
 const fs =require('fs');
 const inquirer = require('inquirer');
 const Choices = require('inquirer/lib/objects/choices');
+const Employee = require('./lib/Employee');
 
 //team array
 const teamArray = [];
@@ -94,26 +95,100 @@ return inquirer.prompt([{
 {
     type:'input',
     name:'name',
-    message:"",
+    message:"What's the employees name?:",
     validate:nameInput=>{
         if(nameInput){
-            
+            return true;
+        }else{
+            console.log ("Please enter employee's name");
+            return false;
         }
     }
+},
+{
+    type:'input',
+    name:'id',
+    message:"please enter the employee's ID.",
+    validate: nameInput =>{
+        if (isNaN(nameInput)){
+            console.log("Please enter Employee ID")
+            return false;
+        }else{
+            return true;
+        }
+    }
+},
+{
+    type:'input',
+    name:'email',
+    message: "Please enter the employee's email.",
+    validate:email =>{
+        valid = /^w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+        if(valid){
+            return true;
+        }else{
+            console.log("Please enter an email");
+            return false;
+        }
+    }
+}, 
+{
+    type:'input',
+    name:'school',
+    message:"Please enter the intern's school",
+    when: (input) => input.role === "Intern",
+    validate: nameInput => {
+        if(nameInput){
+            return true;
+        }else{
+            console.log ("Please enter the intern's school")
+        }
+    }
+},
+
+{
+    type:'input',
+    name:'github',
+    message: "Please enter the employee's github username.",
+    when: (input) => input.role === "Engineer",
+    validate: nameInput => {
+        if(nameInput){
+            return true;
+        }else{
+            console.log ("Please enter the employee's github username")
+        }
+    }
+},
+{
+    type:'confirm',
+    name:'confirmAddEmployee',
+    message:'Would you like to add more team members?',
+    default:false
 }
+])
+.then(employeeData => {
+    //data for types
 
+    let{name, id, role, github, school, confirmAddEmployee} = employeeData;
+    let employee;
 
+    if (role === "Engineer") {
+        employee = new Engineer (name, id, email, github);
 
+        console.log(employee);
+    }else if (role === "Intern"){
+        employee = new Intern (name, id, email, school);
+        console.log(employee);
+    }
+    teamArray.push(employee);
 
-}])
-
-
-
-
-
-
-
-
+    if (confirmAddEmployee){
+        return addEmployee(teamArray);
+    }else {
+        return teamArray;
+        }
+    })
+}; 
 
 //function to generate HTML page file using file system
 const writeFile = data => {
