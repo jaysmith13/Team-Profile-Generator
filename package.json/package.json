@@ -1,0 +1,28 @@
+{
+    "name": "Team-Profile-Generator",
+    "version": "1.0.0",
+    "description": "An application that takes user input and then generates a team directory.",
+    "main": "index.js",
+    "directories": {
+        "lib": "lib"
+    },
+    "scripts": {
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jaysmith13/Team-Profile-Generator.git"
+    },
+    "author": "Janea Smith",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/jaysmith13/team-profile-generator/issues"
+    },
+    "homepage": "https://github.com/jaysmith13/team-profile-generator#readme",
+    "devDependencies": {
+        "jest":"^28.0.1"
+    },
+    "dependencies": {
+        "inquirer": "^8.2.4"
+    }
+}
