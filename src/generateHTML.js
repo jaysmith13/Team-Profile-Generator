@@ -19,7 +19,7 @@ const generateManager = function(manager){
     `;
 }
 //engineer card
-const generateEngineer + function (engineer){
+const generateEngineer = function (engineer){
     return `
     <div class="col-4 mt-4">
         <div class="card h-100">
