@@ -74,8 +74,8 @@ const addManager = () => {
       },
     ])
     .then((managerInput) => {
-      const { name, id, email, officeNumber } = managerInput;
-      const manager = new Manager(name, id, email, officeNumber);
+      const { email, id, name, officeNumber } = managerInput;
+      const manager = new Manager(id, email, name, officeNumber);
 
       teamArray.push(manager);
       console.log(manager);
@@ -93,7 +93,7 @@ const addEmployee = () => {
         type: "list",
         name: "role",
         message: "Please choose employee's role.",
-        choices: ["Engineer", "Intern"],
+        choices: ["Intern", "Engineer"],
       },
       {
         type: "input",
