@@ -11,6 +11,7 @@ The team profile was created to generate user input using the Inquirer from Node
 https://drive.google.com/file/d/1KrenmwhuWvD9yOh_3cR4vX_jACI2-eSc/view
 
 ## Deployed Application
+https://jaysmith13.github.io/Team-Profile-Generator/
 
 ## Credits
 Learned part of the code necessary to create the program from Jolle DesChatelets generator tutorial.
